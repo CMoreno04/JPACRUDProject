@@ -42,7 +42,7 @@ class PlayerTest {
 
 	@Test
 	void test() {
-		assertEquals("messi", player.getFirstName().toLowerCase());
+		assertEquals("lionel", player.getFirstName().toLowerCase());
 	}
 
 }
