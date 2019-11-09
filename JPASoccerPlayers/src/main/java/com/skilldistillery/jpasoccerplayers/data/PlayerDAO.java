@@ -1,4 +1,4 @@
-package com.skilldistillery.jpasoccer.data;
+package com.skilldistillery.jpasoccerplayers.data;
 
 import java.util.List;
 
@@ -14,7 +14,7 @@ public List<Player> findPlayers();
 
 public Boolean deletePlayer(int id);
 
-public Player updatePlayer(int id, Player player);
+public Boolean updatePlayer(int id, Player player);
 
 public Player createPlayer(Player player);
 

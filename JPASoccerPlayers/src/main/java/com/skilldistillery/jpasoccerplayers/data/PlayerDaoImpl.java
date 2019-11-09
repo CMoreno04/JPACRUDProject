@@ -1,4 +1,4 @@
-package com.skilldistillery.jpasoccer.data;
+package com.skilldistillery.jpasoccerplayers.data;
 
 import java.util.List;
 
@@ -6,13 +6,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.springframework.stereotype.Service;
-
 import com.skilldistillery.jpasoccerplayers.entities.Player;
 
 
 @Transactional
-@Service
 public class PlayerDaoImpl implements PlayerDAO {
 	
 	@PersistenceContext
@@ -31,15 +28,12 @@ public class PlayerDaoImpl implements PlayerDAO {
 
 	@Override
 	public Boolean deletePlayer(int id) {
-		
 		try {
-			
-			Player player =em.find(Player.class,id);
-			
-			em.remove(player);
-			
+			em.remove(em.find(Player.class,id));
 			return true;
 		} 
+		
+		
 		catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -49,28 +43,22 @@ public class PlayerDaoImpl implements PlayerDAO {
 	}
 
 	@Override
-	public Player updatePlayer(int id, Player player) {
+	public Boolean updatePlayer(int id, Player player) {
 		
 		Player playerGettingUpdated = em.find(Player.class, id);
 		
 		playerGettingUpdated.setFirstName(player.getFirstName());
 		playerGettingUpdated.setLastName(player.getLastName());
-		playerGettingUpdated.setAge(player.getAge());
-		playerGettingUpdated.setClub(player.getClub());
-		playerGettingUpdated.setMarketValue(player.getMarketValue());
-		playerGettingUpdated.setOverall(player.getOverall());
-		playerGettingUpdated.setNationality(player.getNationality());
 		
 		em.flush();
 		
 		
-		return player;
+		return null;
 	}
 
 	@Override
 	public Player createPlayer(Player player) {
 		em.persist(player);
-	
 		return player;
 	}
 

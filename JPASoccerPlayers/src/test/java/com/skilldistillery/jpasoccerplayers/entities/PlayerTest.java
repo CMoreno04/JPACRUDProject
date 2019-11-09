@@ -10,12 +10,21 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import com.skilldistillery.jpasoccerplayers.data.PlayerDAO;
 
 class PlayerTest {
 	private static EntityManagerFactory emf;
 	private static EntityManager em;
 	private Player player;
+	private Player playercr;
+	
+	private PlayerDAO playerdao;
+	
+	
+	
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -31,18 +40,27 @@ class PlayerTest {
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
 		player = em.find(Player.class, 1);
+		playercr=new Player("Cesar", "Moreno", 25, "Puerto Rico", 99, "FC Barcelona", 111000000);
 
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
 		player = null;
+		playercr = null;
 		em.close();
 	}
 
 	@Test
 	void test() {
 		assertEquals("lionel", player.getFirstName().toLowerCase());
+	}
+		@Test
+		@DisplayName("Create Player")
+		void create_player() {
+			
+			
+			assertEquals("cesar",playerdao.createPlayer(playercr).getFirstName().toLowerCase());
 	}
 
 }

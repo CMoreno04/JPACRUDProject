@@ -12,6 +12,9 @@
 		Film ID: <input type="number" min=1 name="pid" /> <input
 			type="submit" value="Show Player" />
 	</form>
+	<form action="createPlayerForm.do" method="GET">
+	 <input type="submit" value="Create Player" />
+	</form>
 	
 	<hr>
 	
