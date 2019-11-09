@@ -10,7 +10,7 @@
 
 
 		<!--Class Definitions -->
-		<class>com.skilldistillery.jpasoccerplayers.entities.Player</class>
+		<class>com.skilldistillery.jpasoccerplayers.entities</class>
 		
 
 		<properties>

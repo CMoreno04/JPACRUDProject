@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.jpasoccerplayers.entities.Player;
 
+
 @Transactional
 @Service
 public class PlayerDaoImpl implements PlayerDAO {
@@ -24,7 +25,47 @@ public class PlayerDaoImpl implements PlayerDAO {
 
 	@Override
 	public List<Player> findPlayers() {
+	
 		return em.createQuery("SELECT p FROM Player p",Player.class).getResultList();
 	}
+
+	@Override
+	public Boolean deletePlayer(int id) {
+		try {
+			em.remove(em.find(Player.class,id));
+			return true;
+		} 
+		
+		
+		catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		}
+		
+		
+	}
+
+	@Override
+	public Boolean updatePlayer(int id, Player player) {
+		
+		Player playerGettingUpdated = em.find(Player.class, id);
+		
+		playerGettingUpdated.setFirstName(player.getFirstName());
+		playerGettingUpdated.setLastName(player.getLastName());
+		
+		em.flush();
+		
+		
+		return null;
+	}
+
+	@Override
+	public Player createPlayer(Player player) {
+		em.persist(player);
+		em.flush();
+		return player;
+	}
+
+	
 
 }
