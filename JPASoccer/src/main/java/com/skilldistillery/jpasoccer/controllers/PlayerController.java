@@ -85,7 +85,7 @@ public class PlayerController {
 	@RequestMapping(path = "updatePlayer.do", method = RequestMethod.POST)
 	private String updatePlayer(int pid, Model model, Player player) {
 		playerdao.updatePlayer(pid, player);
-		model.addAttribute("player", playerdao.findPlayerById(pid));
+		model.addAttribute("player", player);
 
 		return "player/showNewPlayer";
 	}

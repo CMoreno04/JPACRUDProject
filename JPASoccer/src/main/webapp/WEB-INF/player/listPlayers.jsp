@@ -6,74 +6,60 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-
-<link href="css/styles.css" rel="stylesheet"/>
+<title>List All Players</title>
+<style type="text/css">
+.
+</style>
+<link href="css/styles.css" rel="stylesheet" />
 
 </head>
-	<jsp:include page="navbar.jsp" ><jsp:param value=""
-			name="" />
-	</jsp:include>
-<body>
-	<c:forEach items="${players}" var="player">
-	<c:choose>
-	<c:when test="${!empty player.photo }">
-	
-	
-			<h3>${player.firstName}${player.lastName}</h3>
-			<img alt="${player.firstName} ${player.lastName}"
-				src="${player.photo}" width="100" height="100" border="0">
-			<p>
-				<strong>Age: </strong>${player.age}</p>
-			<p>
-				<strong>Overall Ability: </strong>${player.overall}</p>
-			<p>
-				<strong>Player Value: </strong>
-				<fmt:setLocale value="en_US" />
-				<fmt:formatNumber value="${player.marketValue}" type="currency" />
-			</p>
-			<p>
-				<strong>Nationality: </strong>${player.nationality} <a
-					href="${player.nationWiki}"><img
-					alt="${player.firstName} ${player.lastName}" src="${player.flag}"></a>
-			</p>
-			<p>
-				<strong>Club: </strong>${player.club} <a href="${player.clubWiki}"><img
-					alt="${player.firstName} ${player.lastName}"
-					src="${player.clubLogo}"></a>
-			</p>
-	</c:when>
-		<c:otherwise>
-			<div>
-				<h3>${player.firstName}${player.lastName}</h3>
-				<p>
-					<strong>Age: </strong>${player.age}</p>
-				<p>
-					<strong>Overall Ability: </strong>${player.overall}</p>
-				<p>
-					<strong>Nationality: </strong>${player.nationality}</p>
-				<p>
-					<strong>Player Value: </strong>
-					<fmt:setLocale value="en_US" />
-					<fmt:formatNumber value="${player.marketValue}" type="currency" />
-				</p>
-				<p>
-					<strong>Club: </strong>${player.club}</p>
+<jsp:include page="navbar.jsp"><jsp:param value="" name="" />
+</jsp:include>
+<body style="background-color: #41C5EE">
+
+
+	<div class="container-fluid">
+		<div class="row row-no-gutters">
+			<div class="col-xs-6 col-md-4"></div>
+			<div class="col-xs-6 col-md-4 text-center">
+				<c:forEach items="${players}" var="player">
+					<c:choose>
+						<c:when test="${!empty player.photo }">
+
+							<h3 style="font-family:Impact, Charcoal, sans-serif; ">${player.firstName}&nbsp${player.lastName}</h3>
+							<img class="img-thumbnail"
+								alt="${player.firstName} ${player.lastName}"
+								src="${player.photo}" width="100" height="100" border="0">
+							<br>
+							<br>
+							<form action="getPlayer.do" method="GET">
+								<input type='hidden' name='pid' id='pid' value='${player.id}' />
+								<button type="submit" class="btn btn-success">See
+									Player Details</button>
+							</form>
+						</c:when>
+
+						<c:otherwise>
+							<div>
+								<h3 style="font-family:Impact, Charcoal, sans-serif; ">${player.firstName}&nbsp${player.lastName}</h3>
+
+								<p>
+									<strong>Club: </strong>${player.club}</p>
+							</div>
+							<br>
+							<form action="getPlayer.do" method="GET">
+								<input type='hidden' name='pid' id='pid' value='${player.id}' />
+								<button type="submit" class="btn btn-success">See
+									Player Details</button>
+							</form>
+
+						</c:otherwise>
+					</c:choose>
+					<hr>
+				</c:forEach>
 			</div>
-
-			<form action="deletePlayer.do" method="GET">
-				<input type='hidden' name='pid' id='pid' value='${player.id}' /> <input
-					type="submit" value="Delete Player">
-			</form>
-
-			<form action="updatePlayerForm.do" method="GET">
-				<input type='hidden' name='pid' id='pid' value='${player.id}' /> <input
-					type="submit" value="Update">
-			</form>
-
-		</c:otherwise>
-	</c:choose>
-		<hr>
-	</c:forEach>
+			<div class="col-xs-6 col-md-4"></div>
+		</div>
+	</div>
 </body>
 </html>

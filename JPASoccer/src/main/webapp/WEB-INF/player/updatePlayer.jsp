@@ -8,44 +8,68 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Create Player</title>
+<title>Update Player</title>
 </head>
 <jsp:include page="navbar.jsp"><jsp:param value="" name=""/></jsp:include>
 	<br>
-<body>
-<br>
-<form:form action="updatePlayer.do" method="POST" modelAttribute="player">
-		<form:label path="firstName">First Name:</form:label>
-		<form:input class="input"  required="required" path="firstName" />
-		<form:errors path="firstName" />
-		<br />
-		<form:label path="lastName">Last Name:</form:label>
-		<form:input class="input" required="required" path="lastName" />
-		<form:errors path="lastName" />
-		<br />
-		<form:label path="age">Age:</form:label>
-		<form:input class="number" min="0" max="120" required="required" path="age" />
-		<form:errors path="age" />
-		<br />
-		<form:label path="nationality">Nationality:</form:label>
-		<form:input class="input" required="required" path="nationality" />
-		<form:errors path="nationality" />
-		<br />
-		<form:label path="overall">Overall:</form:label>
-		<form:input class="number" min="0" max="99" required="required" path="overall" />
-		<form:errors path="overall" />
-		<br />
-		<form:label path="club">Club Name:</form:label>
-		<form:input class="input" required="required" path="club" />
-		<form:errors path="club" />
-		<br />
-		<form:label path="marketValue">Player Value:</form:label>
-		<form:input class="number" min="0" required="required" path="marketValue" />
-		<form:errors path="marketValue" />
-		<br />
-		<input type='hidden' name='pid' id='pid' value='${player.id}' />
-		<input class="submit" type="submit" value="Submit" />
+<body style="background-color: #41C5EE">
 
-</form:form>
+	<br>
+	<div class="container-fluid" style="padding-top: 2in;">
+		<div class="row row-no-gutters">
+			<div class="col-xs-6 col-md-4"></div>
+			<div class="col-xs-6 col-md-4 text-center">
+
+
+
+				<form:form action="updatePlayer.do" method="POST" modelAttribute="player">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<form:label path="firstName">First Name</form:label> 
+							<form:input type="text"
+								class="form-control" required="required" path="firstName" placeholder="${player.firstName }"/>
+						</div>
+						<div class="form-group col-md-6">
+							<form:label path="lastName">Last Name</form:label> <form:input
+								type="text" required="required" class="form-control" path="lastName"
+								placeholder="${player.lastName }"/>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<form:label path="age">Age</form:label> <form:input type="number"
+							class="form-control" min="1" required="required" path="age" placeholder="P${player.age}"/>
+					</div>
+					<div class="form-group col-md-6">
+						<form:label path="nationality">Nationality</form:label> <form:input type="text"
+							class="form-control" required="required" path="nationality"
+							placeholder="${player.nationality}"/>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<form:label path="overall">Overall Ability </form:label> <form:input type="number"
+								class="form-control" required="required" min="1" path="overall" placeholder="${player.overall }"/>
+						</div>
+						<div class="form-group col-md-6">
+							<form:label path="club">Club Name</form:label> 
+								<form:input type="text"
+								class="form-control" required="required" path="club" placeholder="${player.club }" />
+						</div>
+						<div class="form-group col-md-6">
+							<form:label path="marketValue">Market Value:</form:label> <form:input type="number"
+								class="form-control" required="required" min="1" path="marketValue" placeholder="${player.marketValue }"/>
+								<br>
+								<br>
+								<input type='hidden' name='pid' id="pid" value='${player.id}' />
+								<button type="submit" class="btn btn-success">Submit</button>
+						</div>
+							
+			
+					</div>
+				
+				</form:form>
+			</div>
+		</div>
+	</div>
+
 </body>
 </html>

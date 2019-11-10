@@ -61,7 +61,6 @@ public class PlayerDaoImpl implements PlayerDAO {
 		playerGettingUpdated.setOverall(player.getOverall());
 		playerGettingUpdated.setNationality(player.getNationality());
 		
-		
 		return player;
 	}
 
