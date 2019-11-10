@@ -15,7 +15,7 @@
 	<div class="w3-bar w3-light-grey w3-border w3-top ">
 	
 		
-			<div style="text-align: center; border-color:#41C5EE;  font-family:Impact, Charcoal, sans-serif; font-size: 45px">
+			<div style="text-align: center; border-color:#41C5EE;  font-family:Impact, Charcoal, sans-serif; font-size: 55px">
 				<strong>Player Index</strong>
 			</div>
 		

@@ -40,6 +40,17 @@
 						alt="${player.firstName} ${player.lastName}"
 						src="${player.clubLogo}"></a>
 				</p>
+				<br>
+				<br>
+				<%-- <form action="deletePlayer.do" method="GET">
+					<input type='hidden' name='pid' id='pid' value='${player.id}' />
+					<button type="submit" class="btn btn-danger">Delete</button>
+				</form>
+				<br>
+				<form action="updatePlayerForm.do" method="GET">
+					<input type='hidden' name='pid' id='pid' value='${player.id}' />
+					<button type="submit" class="btn btn-success">Update</button>
+				</form> --%>
 			</div>
 		</div>
 </div>

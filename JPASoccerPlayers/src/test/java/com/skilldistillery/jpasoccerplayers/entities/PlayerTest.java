@@ -41,6 +41,7 @@ class PlayerTest {
 		em = emf.createEntityManager();
 		player = em.find(Player.class, 1);
 		playercr=new Player("Cesar", "Moreno", 25, "Puerto Rico", 99, "FC Barcelona", 111000000);
+		playerdao.createPlayer(playercr);
 
 	}
 
@@ -55,12 +56,14 @@ class PlayerTest {
 	void test() {
 		assertEquals("lionel", player.getFirstName().toLowerCase());
 	}
+	
+
 		@Test
 		@DisplayName("Create Player")
 		void create_player() {
 			
 			
-			assertEquals("cesar",playerdao.createPlayer(playercr).getFirstName().toLowerCase());
+			assertEquals("cesar",em.find(Player.class, playercr.getId()).getFirstName().toLowerCase());
 	}
 
 }

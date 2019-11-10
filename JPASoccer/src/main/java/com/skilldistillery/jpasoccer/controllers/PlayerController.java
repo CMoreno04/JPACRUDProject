@@ -41,7 +41,7 @@ public class PlayerController {
 		}
 
 		else {
-			model.addAttribute("result", "Unable to Delete Player!");
+			model.addAttribute("result", "Player Not Found!");
 		}
 		return "player/result";
 	}
@@ -71,7 +71,7 @@ public class PlayerController {
 		}
 		
 		else {
-			model.addAttribute("result", "Unable To Find Player!");
+			model.addAttribute("result", "Player Not Found!");
 			return"player/result";		}
 
 	}

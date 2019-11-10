@@ -28,12 +28,15 @@ public class PlayerDaoImpl implements PlayerDAO {
 
 	@Override
 	public Boolean deletePlayer(int id) {
+		
 		try {
-			em.remove(em.find(Player.class,id));
+			
+			Player player =em.find(Player.class,id);
+			
+			em.remove(player);
+			
 			return true;
 		} 
-		
-		
 		catch (Exception e) {
 			e.printStackTrace();
 			return false;
@@ -43,22 +46,25 @@ public class PlayerDaoImpl implements PlayerDAO {
 	}
 
 	@Override
-	public Boolean updatePlayer(int id, Player player) {
+	public Player updatePlayer(int id, Player player) {
 		
 		Player playerGettingUpdated = em.find(Player.class, id);
 		
 		playerGettingUpdated.setFirstName(player.getFirstName());
 		playerGettingUpdated.setLastName(player.getLastName());
+		playerGettingUpdated.setAge(player.getAge());
+		playerGettingUpdated.setClub(player.getClub());
+		playerGettingUpdated.setMarketValue(player.getMarketValue());
+		playerGettingUpdated.setOverall(player.getOverall());
+		playerGettingUpdated.setNationality(player.getNationality());
 		
-		em.flush();
-		
-		
-		return null;
+		return player;
 	}
 
 	@Override
 	public Player createPlayer(Player player) {
 		em.persist(player);
+	
 		return player;
 	}
 
