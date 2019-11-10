@@ -5,27 +5,31 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Welcome!</title>
+<style type="text/css">
+.center{
+margin: 0 auto; 
+padding-top: 200px;
+ display: flex;
+  align-items: center;
+  justify-content: center
+
+
+}
+
+.b{
+background-color: #41C5EE ;
+
+}
+
+
+
+</style>
 </head>
-<body>
-	<form action="getPlayer.do" method="GET">
-		Film ID: <input type="number" min=1 name="pid" /> <input
-			type="submit" value="Show Player" />
-	</form>
-	<form action="createPlayerForm.do" method="GET">
-	 <input type="submit" value="Create Player" />
-	</form>
-	
-	<hr>
-	
-	<c:forEach items="${players}" var="player">
-	
-		<a href="getPlayer.do?pid=${player.id}"><img alt="${player.firstName} ${player.lastName}" src="${player.photo }" width="100" height="100" border="0" ></a>
-		 <br>
-	</c:forEach>
+	<jsp:include page="player/navbar.jsp"><jsp:param value="" name=""/></jsp:include>
+	<br>
+<body class="b">
 
-
-
-
+<iframe class="center" width="900" height="800" src="https://www.youtube.com/embed/U0Mo8lK4Zic?start=13" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </body>
 </html>

@@ -21,6 +21,12 @@ public class PlayerController {
 
 		return "index";
 	}
+	
+	@RequestMapping(path = "listPlayers.do", method=RequestMethod.GET)
+	public String listAllPlayers(Model model) {
+		model.addAttribute("players",playerdao.findPlayers());
+		return "player/listPlayers";
+	}
 
 	@RequestMapping(path = "createPlayerForm.do", method = RequestMethod.GET)
 	public String createPlayerForm(Player player) {
@@ -47,16 +53,40 @@ public class PlayerController {
 	}
 
 	@RequestMapping(path = "getPlayer.do", method = RequestMethod.GET)
-	public String getPlayer(Model model, @RequestParam("pid") int pid) {
+	public String getPlayer(Model model, int pid) {
+		Player player = playerdao.findPlayerById(pid);
+		if (!(player == null)) {
 
-		model.addAttribute("player", playerdao.findPlayerById(pid));
+			if (player.getClubLogo() == null) {
+				model.addAttribute("player", player);
+				return "player/showNewPlayer";
 
-		return "player/show";
+			}
+
+			else {
+
+				model.addAttribute("player", player);
+				return "player/show";
+			}
+		}
+		
+		else {
+			model.addAttribute("result", "Unable To Find Player!");
+			return"player/result";		}
+
 	}
 
-	@RequestMapping(path = "updatePlayer.do", method=RequestMethod.POST)
-	private String updatePlayer(Player player, Model model) {
-		model.addAttribute("player",playerdao.findPlayerById(player.getId()));
+	@RequestMapping(path = "updatePlayerForm.do", method = RequestMethod.GET)
+	public String updatePlayerForm(Player player, int pid, Model model) {
+		model.addAttribute("player", playerdao.findPlayerById(pid));
+		return "player/updatePlayer";
+	}
+
+	@RequestMapping(path = "updatePlayer.do", method = RequestMethod.POST)
+	private String updatePlayer(int pid, Model model, Player player) {
+		playerdao.updatePlayer(pid, player);
+		model.addAttribute("player", playerdao.findPlayerById(pid));
+
 		return "player/showNewPlayer";
 	}
 

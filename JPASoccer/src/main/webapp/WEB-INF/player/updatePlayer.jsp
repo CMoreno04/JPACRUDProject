@@ -10,10 +10,13 @@
 <meta charset="UTF-8">
 <title>Create Player</title>
 </head>
+<jsp:include page="navbar.jsp"><jsp:param value="" name=""/></jsp:include>
+	<br>
 <body>
-<form:form action="createPlayer.do" method="POST" modelAttribute="player">
+<br>
+<form:form action="updatePlayer.do" method="POST" modelAttribute="player">
 		<form:label path="firstName">First Name:</form:label>
-		<form:input class="input" required="required" path="firstName" />
+		<form:input class="input"  required="required" path="firstName" />
 		<form:errors path="firstName" />
 		<br />
 		<form:label path="lastName">Last Name:</form:label>
@@ -40,6 +43,7 @@
 		<form:input class="number" min="0" required="required" path="marketValue" />
 		<form:errors path="marketValue" />
 		<br />
+		<input type='hidden' name='pid' id='pid' value='${player.id}' />
 		<input class="submit" type="submit" value="Submit" />
 
 </form:form>
