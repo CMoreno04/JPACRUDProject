@@ -55,7 +55,7 @@
 								class="form-control" required="required" path="club" placeholder="Club Name" />
 						</div>
 						<div class="form-group col-md-6">
-							<form:label path="marketValue">Market Value:</form:label> <form:input type="number"
+							<form:label path="marketValue">Market Value</form:label> <form:input type="number"
 								class="form-control" required="required" min="1" path="marketValue" placeholder="Market Value"/>
 								<br>
 								<br>
